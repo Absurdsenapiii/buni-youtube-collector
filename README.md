@@ -1,19 +1,19 @@
 # BMH public YouTube collector
 
-Prepared, disabled integration for https://terminal.alignmentlab.com.
+Active public-data integration for https://terminal.alignmentlab.com.
 Only @bunimediahub is collected. Sidequest is paused.
 
 The collector reads official YouTube Data API v3 public channel/video counts. It does not read private Analytics, comment text, or viewer identities. Malfoid titles are review candidates, not an approved roster. No derived engagement scores, summed views, growth calculations, or population ratios are emitted.
 
 ## Status
 
-There is no active recurring schedule. The manual workflow skips unless the owner-approved COLLECTOR_ENABLED repository variable is true. The destination's short-lived GitHub OIDC writer trust must be implemented, reviewed, configured and tested before activation. Never enable this draft as-is.
+Enabled on 3 November 2026. The first collection succeeded at 07:17:55 UTC (15:17:55 Singapore). The workflow runs daily at approximately 08:17 Asia/Singapore and also supports manual runs; GitHub scheduling can be delayed. COLLECTOR_ENABLED=true is the owner-approved activation gate. Signed, repository-restricted GitHub OIDC writes were tested end-to-end. Sidequest remains paused.
 
 ## Private configuration
 
 The owner enters the existing restricted YouTube Data API v3 key directly in GitHub repository Settings > Secrets and variables > Actions > New repository secret, named YOUTUBE_API_KEY. Never paste the value into chat, source, issues, logs, or screenshots. Repository collaborators who can modify workflows can use its secrets, so keep write access restricted.
 
-The intended production writer validates signed GitHub OIDC tokens against the exact immutable repository/owner IDs, issuer, audience, main branch, approved workflow, allowed events and expiration. Public page viewing must never authorize writes. This repository stores code only. Snapshots belong in the terminal's persistent store, not Git history or Actions artifacts. The terminal must purge snapshots at 29 days, including when YouTube requests fail. Inactive or delayed schedules need operational monitoring.
+The production writer validates signed GitHub OIDC tokens against the exact immutable repository/owner IDs, issuer, audience, main branch, approved workflow, allowed events and expiration. Public page viewing must never authorize writes. This repository stores code only. Snapshots belong in the terminal's persistent store, not Git history or Actions artifacts. The terminal purges snapshots older than 29 days on each collector run, including when YouTube requests fail. Inactive or delayed schedules need operational monitoring.
 
 ## Tests
 
