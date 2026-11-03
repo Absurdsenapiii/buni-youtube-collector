@@ -7,7 +7,7 @@ The collector reads official YouTube Data API v3 public channel/video counts. It
 
 ## Status
 
-Enabled on 3 November 2026. The first collection succeeded at 07:17:55 UTC (15:17:55 Singapore). The workflow runs daily at approximately 08:17 Asia/Singapore and also supports manual runs; GitHub scheduling can be delayed. COLLECTOR_ENABLED=true is the owner-approved activation gate. Signed, repository-restricted GitHub OIDC writes were tested end-to-end. Sidequest remains paused.
+Enabled on 3 November 2026. The first collection succeeded at 07:17:55 UTC (15:17:55 Singapore). The workflow runs daily at 08:55 Asia/Singapore (00:55 UTC), targeting a public update around 9 AM Singapore time and also supports manual runs; GitHub scheduling can be delayed. COLLECTOR_ENABLED=true is the owner-approved activation gate. Signed, repository-restricted GitHub OIDC writes were tested end-to-end. Sidequest remains paused.
 
 ## Private configuration
 
