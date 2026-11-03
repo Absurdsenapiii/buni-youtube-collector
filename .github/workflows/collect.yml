@@ -1,0 +1,29 @@
+name: BMH public YouTube collection
+# Activation and a recurring schedule require the owner's separate approval.
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: bmh-collector
+  cancel-in-progress: false
+jobs:
+  collect:
+    if: vars.COLLECTOR_ENABLED == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm test
+      - run: npm run collect
+        env:
+          COLLECTOR_ENABLED: ${{ vars.COLLECTOR_ENABLED }}
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
