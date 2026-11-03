@@ -1,7 +1,9 @@
 name: BMH public YouTube collection
-# Activation and a recurring schedule require the owner's separate approval.
+# Runs daily at 08:17 Asia/Singapore (00:17 UTC), plus manual verification.
 on:
   workflow_dispatch:
+  schedule:
+    - cron: '17 0 * * *'
 permissions:
   contents: read
 concurrency:
@@ -16,10 +18,10 @@ jobs:
       contents: read
       id-token: write
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
         with:
           persist-credentials: false
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
           node-version: '22'
       - run: npm test
