@@ -1,9 +1,10 @@
 name: BMH public YouTube collection
-# Runs daily at 08:55 Asia/Singapore (00:55 UTC), plus manual verification.
+# Scheduled daily at 02:55 Asia/Singapore (18:55 UTC on the previous UTC date).
+# Six-hour-earlier experiment; actual execution may be early or delayed.
 on:
   workflow_dispatch:
   schedule:
-    - cron: '55 0 * * *'
+    - cron: '55 18 * * *'
 permissions:
   contents: read
 concurrency:
